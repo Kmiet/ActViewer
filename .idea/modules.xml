@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ActWiever.iml" filepath="$PROJECT_DIR$/ActWiever.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ActViewer.iml" filepath="$PROJECT_DIR$/ActViewer.iml" />
     </modules>
   </component>
 </project>
