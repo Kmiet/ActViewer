@@ -7,13 +7,15 @@ It is going to be a simple project for an Object-Oriented Programming course at 
 ```sh
 main <options> [arguments]
 
-    -h              show help
-    -f <file>       documment to view
-    -c <chapters>   show content from chosen chapters
-    -a <articles>   show content from chosen articles
-    -s <sections>   show content from chosen sections
-    -p <opints>     show content from chosen points
-    -l <lines>      show content from chosen lines
+    -h             show help
+    -f <file>      documment to view
+    -c <chapter>   show content from chosen chapter
+    -a <article>   show content from chosen article
+    -s <section>   show content from chosen section
+    -p <opint>     show content from chosen point
+    -l <line>      show content from chosen line
+    -u <unit>      show content from chosen unit
+    -t <table>     show table of contents
 
 ```
 

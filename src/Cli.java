@@ -1,81 +1,82 @@
 import org.apache.commons.cli.*;
 
+import java.util.Iterator;
+
 public class Cli {
 
-    private String filename;
-    private String chapters;
-    private String articles;
-    private String sections;
-    private String points;
-    private String lines;
+    private CommandLine cmd;
+    private Options options;
+
+    Cli(String[] args) throws ParseException {
+        this.options = this.setOptions();
+        this.parse(args);
+    }
 
     private Options setOptions(){
         Options options = new Options();
-        options.addOption("f",true,"Path to file");
-        options.addOption("h", false, "Show help");
-        options.addOption("c",true,"Show chapter [number of chapter]");
-        options.addOption("a",true,"Number of article");
-        options.addOption("s",true,"Number of section");
-        options.addOption("p",true,"Number of point");
-        options.addOption("l",true,"Number of line/letter");
+        options.addOption("f", "file",true,"Path to file");
+        options.addOption("h", "help",false, "Show help");
+        options.addOption("c", "chapter",true,"Show chapter [number of chapter]");
+        options.addOption("a", "article",true,"Number of article");
+        options.addOption("s", "section",true,"Number of section");
+        options.addOption("p", "point",true,"Number of point");
+        options.addOption("l", "line",true,"Number of line/letter");
+        options.addOption("u", "unit",true,"Number of unit");
+        options.addOption("t", "table",false,"Show table of contents");
 
         return options;
     }
 
-    public void parse(String[] arguments) throws ParseException {
-
-        Options options = this.setOptions();
+    private void parse(String[] arguments) throws ParseException {
         CommandLineParser parser = new DefaultParser();
-        CommandLine cmd = parser.parse(options, arguments);
+        this.cmd = parser.parse(this.options, arguments);
+    }
 
-        if(cmd.hasOption("f")){
-            this.filename = cmd.getOptionValue("f");
-        } else{
-            throw new ParseException("Has to run with option: f");
+    public boolean checkHelp(){
+        if(this.cmd.hasOption("h")) {
+            HelpFormatter formatter = new HelpFormatter();
+            formatter.printHelp("main <options> [arguments]", "Available options: ", options, "\r\nExamples: \r\n main -f konstytucja.txt -a 4 -p 2");
+            return true;
         }
+        return false;
+    }
 
-        if(cmd.hasOption("c")){
-            this.chapters = cmd.getOptionValue("c");
-        }
-
-        if(cmd.hasOption("a")){
-            this.articles = cmd.getOptionValue("a");
-        }
-
-        if(cmd.hasOption("s")){
-            this.sections = cmd.getOptionValue("s");
-        }
-
-        if(cmd.hasOption("p")){
-            this.points = cmd.getOptionValue("p");
-        }
-
-        if(cmd.hasOption("l")){
-            this.lines = cmd.getOptionValue("l");
+    public String getFile() throws MissingOptionException {
+        if(this.cmd.hasOption("f")) {
+            return this.cmd.getOptionValue("f");
+        } else {
+            throw new MissingOptionException("Could not access any file. For more information run with option: h");
         }
     }
 
-    public String getFilename() {
-        return filename;
+    public boolean checkTableArg(){
+        if(this.cmd.hasOption("t")) {
+            return true;
+        }
+        return false;
     }
 
-    public String getChapters() {
-        return chapters;
+    public String getUnit() {
+        return this.cmd.getOptionValue("u");
     }
 
-    public String getArticles() {
-        return articles;
+    public String getChapter() {
+        return this.cmd.getOptionValue("c");
     }
 
-    public String getSections() {
-        return sections;
+    public String getArticle() {
+        return this.cmd.getOptionValue("a");
     }
 
-    public String getPoints() {
-        return points;
+    public String getSection() {
+        return this.cmd.getOptionValue("s");
     }
 
-    public String getLines() {
-        return lines;
+    public String getPoint() {
+        return this.cmd.getOptionValue("p");
+    }
+
+    public String getLine() {
+        return this.cmd.getOptionValue("l");
     }
 }

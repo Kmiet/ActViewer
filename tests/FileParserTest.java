@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
+import java.nio.file.InvalidPathException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileParserTest {
@@ -7,16 +9,10 @@ class FileParserTest {
     @Test
     void testParser(){
         this.testFileExists();
-        this.testParseMethod();
     }
 
     @Test
     void testFileExists(){
-        assertThrows(IOException.class, () -> new FileParser().parse("Path that does not exist"), "Wrong path to file");
-    }
-
-    @Test
-    void testParseMethod(){
-        assertThrows(IOException.class, () -> new FileParser().parse(""), "Has to run with option: f");
+        assertThrows(InvalidPathException.class, () -> new FileParser().parse("Path:\\That\\Does\\Not\\Exist"), "ERROR: Wrong path to file");
     }
 }

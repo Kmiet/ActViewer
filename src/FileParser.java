@@ -1,20 +1,20 @@
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 
 public class FileParser {
 
-    public String parse(String filePath) throws IOException{
+    public String parse(String filePath) throws InvalidPathException, IOException{
 
         if(Files.exists(Paths.get(filePath))){
 
             byte[] bytetxt = Files.readAllBytes(Paths.get(filePath));
             // encoding set to ISO Windows-1250, tried ISO-8859-2, ISO 8859-13 but was not working properly
             String docContent = this.clearOut(new String(bytetxt, "Windows-1250"));
-
             return docContent;
         } else {
-            throw new IOException("Wrong path to file");
+            throw new InvalidPathException("Wrong path to file", "ERROR");
         }
     }
 

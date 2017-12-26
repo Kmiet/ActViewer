@@ -1,175 +1,130 @@
+import org.apache.commons.cli.MissingArgumentException;
+import org.apache.commons.cli.MissingOptionException;
+import org.apache.commons.cli.ParseException;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class CliTest {
 
     @Test
     void testParser() {
         this.testNoOptions();
+        this.testHelpOption();
+        this.testTableOption();
         this.testFileOption();
-        this.testChaptersOption();
-        this.testArticlesOption();
-        this.testSectionsOption();
-        this.testPointsOption();
-        this.testLinesOption();
+        this.testUnitOption();
+        this.testChapterOption();
+        this.testArticleOption();
+        this.testSectionOption();
+        this.testPointOption();
+        this.testLineOption();
     }
 
     @Test
     void testNoOptions() {
-        Cli config = new Cli();
-        try {
-            config.parse(new String("").split(" "));
-            assertEquals(config.getFilename(), "");
-            assertEquals(config.getChapters(), "");
-            assertEquals(config.getArticles(), "");
-            assertEquals(config.getSections(), "");
-            assertEquals(config.getPoints(), "");
-            assertEquals(config.getLines(), "");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "Has to run with option: f");
+        assertThrows(MissingOptionException.class, () -> new Cli(new String("").split(" ")).getFile(), "Could not access any file. For more information run with option: h");
+    }
+
+    @Test
+    void testHelpOption() {
+        try{
+            assertFalse(new Cli(new String("").split(" ")).checkHelp());
+            assertTrue(new Cli(new String("-h").split(" ")).checkHelp());
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-h -f").split(" ")).checkHelp(), "Missing argument for option: f");
+        } catch (ParseException e){
+            System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    void testTableOption() {
+        try{
+            assertFalse(new Cli(new String("").split(" ")).checkTableArg());
+            assertTrue(new Cli(new String("-t").split(" ")).checkTableArg());
+            assertTrue(new Cli(new String("-t -f filename").split(" ")).checkTableArg());
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-t -f").split(" ")).checkTableArg(), "Missing argument for option: f");
+        } catch (ParseException e){
+            System.out.println(e.getMessage());
+        }
+        /*
+        Cli config = new Cli();
+        assertThrows(ParseException.class, () -> config.parse(new String("-t").split("")), "");
+        try {
+            config.parse(new String("-t -f").split(" "));
+        }catch (Exception e) {
+            assertEquals(e.getMessage(),"Missing argument for option: f");
+        }
+        */
     }
 
     @Test
     void testFileOption() {
-        Cli config = new Cli();
         try {
-            config.parse(new String("-f filename").split(" "));
-            assertEquals(config.getFilename(), "filename");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f").split(" "));
-            assertEquals(config.getFilename(), "filename");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "Missing argument for option: f");
+            assertEquals(new Cli(new String("-f filename").split(" ")).getFile(), "filename");
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-f").split(" ")).getFile(), "Missing argument for option: f");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
     @Test
-    void testChaptersOption() {
-        Cli config = new Cli();
+    void testUnitOption() {
         try {
-            config.parse(new String("-f file -c 4").split(" "));
-            assertEquals(config.getChapters(), "4");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f file -c 1:3").split(" "));
-            assertEquals(config.getChapters(), "1:3");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f file -c").split(" "));
-            assertEquals(config.getChapters(), "");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "Missing argument for option: c");
+            assertEquals(new Cli(new String("-u 3").split(" ")).getUnit(), "3");
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-u").split(" ")).getUnit(), "Missing argument for option: u");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
     @Test
-    void testArticlesOption() {
-        Cli config = new Cli();
+    void testChapterOption() {
         try {
-            config.parse(new String("-f file -a 4").split(" "));
-            assertEquals(config.getArticles(), "4");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f file -a 1:3").split(" "));
-            assertEquals(config.getArticles(), "1:3");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f file -a").split(" "));
-            assertEquals(config.getArticles(), "");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "Missing argument for option: a");
+            assertEquals(new Cli(new String("-c 3").split(" ")).getChapter(), "3");
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-c").split(" ")).getChapter(), "Missing argument for option: c");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
     @Test
-    void testSectionsOption() {
-        Cli config = new Cli();
+    void testArticleOption() {
         try {
-            config.parse(new String("-f file -s 4").split(" "));
-            assertEquals(config.getSections(), "4");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f file -s 1:3").split(" "));
-            assertEquals(config.getSections(), "1:3");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f file -s").split(" "));
-            assertEquals(config.getSections(), "");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "Missing argument for option: s");
+            assertEquals(new Cli(new String("-a 3").split(" ")).getArticle(), "3");
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-a").split(" ")).getArticle(), "Missing argument for option: a");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
     @Test
-    void testPointsOption() {
-        Cli config = new Cli();
+    void testSectionOption() {
         try {
-            config.parse(new String("-f file -p 4").split(" "));
-            assertEquals(config.getPoints(), "4");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f file -p 1:3").split(" "));
-            assertEquals(config.getPoints(), "1:3");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f file -p").split(" "));
-            assertEquals(config.getPoints(), "");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "Missing argument for option: p");
+            assertEquals(new Cli(new String("-s 3").split(" ")).getSection(), "3");
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-s").split(" ")).getSection(), "Missing argument for option: s");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
     @Test
-    void testLinesOption() {
-        Cli config = new Cli();
+    void testPointOption() {
         try {
-            config.parse(new String("-f file -l 4").split(" "));
-            assertEquals(config.getLines(), "4");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
+            assertEquals(new Cli(new String("-p 3").split(" ")).getPoint(), "3");
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-p").split(" ")).getPoint(), "Missing argument for option: p");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
+    }
 
+    @Test
+    void testLineOption() {
         try {
-            config.parse(new String("-f file -l 1:3").split(" "));
-            assertEquals(config.getLines(), "1:3");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "");
-        }
-
-        try {
-            config.parse(new String("-f file -l").split(" "));
-            assertEquals(config.getLines(), "");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "Missing argument for option: l");
+            assertEquals(new Cli(new String("-l 3").split(" ")).getLine(), "3");
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-l").split(" ")).getLine(), "Missing argument for option: l");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 }
