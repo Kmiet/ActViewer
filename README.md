@@ -12,7 +12,7 @@ main <options> [arguments]
     -c <chapter>   show content from chosen chapter
     -a <article>   show content from chosen article
     -s <section>   show content from chosen section
-    -p <opint>     show content from chosen point
+    -p <point>     show content from chosen point
     -l <line>      show content from chosen line
     -u <unit>      show content from chosen unit
     -t <table>     show table of contents

@@ -17,7 +17,7 @@ class CliTest {
         this.testChapterOption();
         this.testArticleOption();
         this.testSectionOption();
-        this.testPointOption();
+        this.testSubsectionOption();
         this.testLineOption();
     }
 
@@ -109,10 +109,10 @@ class CliTest {
     }
 
     @Test
-    void testPointOption() {
+    void testSubsectionOption() {
         try {
-            assertEquals(new Cli(new String("-p 3").split(" ")).getPoint(), "3");
-            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-p").split(" ")).getPoint(), "Missing argument for option: p");
+            assertEquals(new Cli(new String("-S 3").split(" ")).getSubsection(), "3");
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-S").split(" ")).getSubsection(), "Missing argument for option: S");
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

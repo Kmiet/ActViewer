@@ -19,8 +19,8 @@ public class Cli {
         options.addOption("c", "chapter",true,"Show chapter [number of chapter]");
         options.addOption("a", "article",true,"Number of article");
         options.addOption("s", "section",true,"Number of section");
-        options.addOption("p", "point",true,"Number of point");
-        options.addOption("l", "line",true,"Number of line/letter");
+        options.addOption("S", "subsection",true,"Number of subsection");
+        options.addOption("l", "letter",true,"Number of line/letter");
         options.addOption("u", "unit",true,"Number of unit");
         options.addOption("t", "table",false,"Show table of contents");
 
@@ -35,7 +35,7 @@ public class Cli {
     public boolean checkHelp(){
         if(this.cmd.hasOption("h")) {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("main <options> [arguments]", "Available options: ", options, "\r\nExamples: \r\n main -f konstytucja.txt -a 4 -p 2");
+            formatter.printHelp("main <options> [arguments]", "Available options: ", options, "\r\nExamples: \r\n main -f konstytucja.txt -a 4 -s 2");
             return true;
         }
         return false;
@@ -72,8 +72,8 @@ public class Cli {
         return this.cmd.getOptionValue("s");
     }
 
-    public String getPoint() {
-        return this.cmd.getOptionValue("p");
+    public String getSubsection() {
+        return this.cmd.getOptionValue("S");
     }
 
     public String getLine() {

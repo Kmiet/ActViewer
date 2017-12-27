@@ -5,8 +5,16 @@ public class Main {
         try {
             Cli config = new Cli(args);
 
-            String fileContent = new FileParser().parse(config.getFile());
-            System.out.println(fileContent);
+            if(!config.checkHelp()){
+                DocumentNode doc = new FileParser().parse(config.getFile());
+
+                System.out.println(doc.toString());
+
+                if(config.checkTableArg()){
+                    System.out.println(doc.showTableOfContents());
+                }
+
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
