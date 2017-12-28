@@ -20,7 +20,7 @@ public class FileParser {
             String docContent = this.clearOut(new String(bytetxt, "Windows-1250"));
             return this.assignor.createTree(docContent);
         } else {
-            throw new InvalidPathException("Wrong path to file", "ERROR");
+            throw new InvalidPathException("Wrong path to file", "");
         }
     }
 

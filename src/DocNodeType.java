@@ -9,6 +9,25 @@ public enum DocNodeType {
     Subsection,
     Letter;
 
+    public DocNodeType charToType(String s){
+        switch (s){
+            case "a":
+                return DocNodeType.Article;
+            case "s":
+                return DocNodeType.Section;
+            case "S":
+                return DocNodeType.Subsection;
+            case "l":
+                return DocNodeType.Letter;
+            case "u":
+                return DocNodeType.Unit;
+            case "c":
+                return DocNodeType.Chapter;
+            default:
+                return DocNodeType.Undefined;
+        }
+    }
+
     public int getPriority(){
         switch(this){
             case Root:

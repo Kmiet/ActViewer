@@ -7,17 +7,29 @@ public class Main {
 
             if(!config.checkHelp()){
                 DocumentNode doc = new FileParser().parse(config.getFile());
+                NodeFinder finder = new NodeFinder(config.makeQuery(), doc);
 
-                System.out.println(doc.toString());
-
+                DocumentNode[] list = finder.searchDocument();
+                String output = new String();
                 if(config.checkTableArg()){
-                    System.out.println(doc.showTableOfContents());
+                    for(DocumentNode node : list) {
+                        output = output + node.showTableOfContents() + "\r\n";
+                    }
+                    if(list.length == 0) { output = output + doc.showTableOfContents(); }
+                    System.out.print(output);
+                    System.exit(0);
                 }
-
+                for(DocumentNode node : list){
+                    output = output + "\r\n" + node.toString() + "\r\n";
+                }
+                if(list.length == 0){
+                    output = output + doc.toString();
+                }
+                System.out.print(output);
             }
-
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("ERROR - " + e.getMessage());
+           // e.printStackTrace();
         }
     }
 }

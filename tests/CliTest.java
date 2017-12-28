@@ -32,7 +32,7 @@ class CliTest {
             assertFalse(new Cli(new String("").split(" ")).checkHelp());
             assertTrue(new Cli(new String("-h").split(" ")).checkHelp());
             assertThrows(MissingArgumentException.class, () -> new Cli(new String("-h -f").split(" ")).checkHelp(), "Missing argument for option: f");
-        } catch (ParseException e){
+        } catch (Exception e){
             System.out.println(e.getMessage());
         }
     }
@@ -44,7 +44,7 @@ class CliTest {
             assertTrue(new Cli(new String("-t").split(" ")).checkTableArg());
             assertTrue(new Cli(new String("-t -f filename").split(" ")).checkTableArg());
             assertThrows(MissingArgumentException.class, () -> new Cli(new String("-t -f").split(" ")).checkTableArg(), "Missing argument for option: f");
-        } catch (ParseException e){
+        } catch (Exception e){
             System.out.println(e.getMessage());
         }
         /*
@@ -121,8 +121,8 @@ class CliTest {
     @Test
     void testLineOption() {
         try {
-            assertEquals(new Cli(new String("-l 3").split(" ")).getLine(), "3");
-            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-l").split(" ")).getLine(), "Missing argument for option: l");
+            assertEquals(new Cli(new String("-l 3").split(" ")).getLetter(), "3");
+            assertThrows(MissingArgumentException.class, () -> new Cli(new String("-l").split(" ")).getLetter(), "Missing argument for option: l");
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

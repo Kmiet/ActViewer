@@ -1,7 +1,5 @@
 import org.apache.commons.cli.*;
 
-import java.util.Iterator;
-
 public class Cli {
 
     private CommandLine cmd;
@@ -35,7 +33,7 @@ public class Cli {
     public boolean checkHelp(){
         if(this.cmd.hasOption("h")) {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("main <options> [arguments]", "Available options: ", options, "\r\nExamples: \r\n main -f konstytucja.txt -a 4 -s 2");
+            formatter.printHelp("main <options> [arguments]", "Available options: ", options, "\r\nUsage examples: \r\n main -f konstytucja.txt -a 4 -s 2\r\n main -f uokik.txt -u II:III -t");
             return true;
         }
         return false;
@@ -76,7 +74,19 @@ public class Cli {
         return this.cmd.getOptionValue("S");
     }
 
-    public String getLine() {
+    public String getLetter() {
         return this.cmd.getOptionValue("l");
+    }
+
+    public SearchQuery makeQuery() {
+        SearchQuery query = new SearchQuery();
+        DocNodeType type = DocNodeType.Undefined;
+        String[] optionMarks = new String("u c a s S l").split(" ");
+        for(String optionMark : optionMarks){
+            if(this.cmd.hasOption(optionMark)){
+                query.addElement(new SearchElement(query, type.charToType(optionMark), this.cmd.getOptionValue(optionMark)));
+            }
+        }
+        return query;
     }
 }
