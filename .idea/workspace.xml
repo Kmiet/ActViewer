@@ -2,21 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a514f29-a2d8-4ff9-95c7-9d9a8db02b33" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/ActViewer/CliTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/ActViewer/FileParserTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/CliTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/FileParserTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ActViewer/Cli.class" afterPath="$PROJECT_DIR$/out/production/ActViewer/Cli.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ActViewer/DocumentNode.class" afterPath="$PROJECT_DIR$/out/production/ActViewer/DocumentNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ActViewer/Main.class" afterPath="$PROJECT_DIR$/out/production/ActViewer/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ActViewer/SearchElement.class" afterPath="$PROJECT_DIR$/out/production/ActViewer/SearchElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Cli.java" afterPath="$PROJECT_DIR$/src/Cli.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DocumentNode.java" afterPath="$PROJECT_DIR$/src/DocumentNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SearchElement.java" afterPath="$PROJECT_DIR$/src/SearchElement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SearchQuery.java" afterPath="$PROJECT_DIR$/src/SearchQuery.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -566,8 +551,14 @@
             <option name="EMULATED" value="true" />
           </properties>
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
