@@ -12,14 +12,13 @@ public class Cli {
 
     private Options setOptions(){
         Options options = new Options();
-        options.addOption("f", "file",true,"Path to file");
+        options.addOption("f", "file",true,"Show file");
         options.addOption("h", "help",false, "Show help");
-        options.addOption("c", "chapter",true,"Show chapter [number of chapter]");
-        options.addOption("a", "article",true,"Number of article");
-        options.addOption("s", "section",true,"Number of section");
-        options.addOption("S", "subsection",true,"Number of subsection");
-        options.addOption("l", "letter",true,"Number of line/letter");
-        options.addOption("u", "unit",true,"Number of unit");
+        options.addOption("c", "chapter",true,"Show chapter");
+        options.addOption("a", "article",true,"SShow section");
+        options.addOption("S", "subsection",true,"Show subsection");
+        options.addOption("l", "letter",true,"Show line/letter");
+        options.addOption("u", "unit",true,"Show unit");
         options.addOption("t", "table",false,"Show table of contents");
 
         return options;

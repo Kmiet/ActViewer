@@ -1,13 +1,11 @@
 public class SearchElement {
 
-    private SearchQuery query;
     private DocNodeType type;
     private String id;
     private boolean isMultipleSearch;
     private String lastArticleID;
 
     SearchElement(SearchQuery query, DocNodeType type, String id){
-        this.query = query;
         this.type = type;
         this.id = id;
         this.isMultipleSearch = false;

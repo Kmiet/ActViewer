@@ -67,9 +67,7 @@ public class DocumentNode {
         return id;
     }
 
-    public String getUniversalID() {
-        return universalID;
-    }
+    public String getUniversalID() { return universalID; }
 
     public DocumentNode getParent() {
         return parent;
