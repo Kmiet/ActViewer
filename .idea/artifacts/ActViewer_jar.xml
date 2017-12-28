@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ActViewer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ActViewer_jar</output-path>
+    <root id="archive" name="ActViewer.jar">
+      <element id="module-output" name="ActViewer" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-cli-1.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
