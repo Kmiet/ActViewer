@@ -15,7 +15,8 @@ public class Cli {
         options.addOption("f", "file",true,"Show file");
         options.addOption("h", "help",false, "Show help");
         options.addOption("c", "chapter",true,"Show chapter");
-        options.addOption("a", "article",true,"SShow section");
+        options.addOption("a", "article",true,"Show article");
+        options.addOption("s","section",true,"Show section");
         options.addOption("S", "subsection",true,"Show subsection");
         options.addOption("l", "letter",true,"Show line/letter");
         options.addOption("u", "unit",true,"Show unit");
