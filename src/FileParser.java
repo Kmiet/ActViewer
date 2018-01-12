@@ -17,7 +17,7 @@ public class FileParser {
 
             byte[] bytetxt = Files.readAllBytes(Paths.get(filePath));
             // encoding set to ISO Windows-1250, tried ISO-8859-2, ISO 8859-13 but was not working properly
-            String docContent = this.clearOut(new String(bytetxt, "Windows-1250"));
+            String docContent = this.clearOut(new String(bytetxt, "UTF-8"));
             return this.assignor.createTree(docContent);
         } else {
             throw new InvalidPathException("Wrong path to file", "");
