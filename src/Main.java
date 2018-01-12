@@ -13,14 +13,14 @@ public class Main {
                 String output = new String();
                 if(config.checkTableArg()){
                     for(DocumentNode node : list) {
-                        output = output + node.showTableOfContents() + "\r\n";
+                        output = output + node.showTableOfContents() + "\n";
                     }
                     if(list.length == 0) { output = output + doc.showTableOfContents(); }
                     System.out.print(output);
                     System.exit(0);
                 }
                 for(DocumentNode node : list){
-                    output = output + "\r\n" + node.toString() + "\r\n";
+                    output = output + "\n" + node.toString() + "\n";
                 }
                 if(list.length == 0){
                     output = output + doc.toString();

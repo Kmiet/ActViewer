@@ -25,11 +25,11 @@ public class FileParser {
     }
 
     private String clearOut(String content){
-        return  content.replaceAll("-\r\n", "")
-                .replaceAll(".Kancelaria Sejmu.*\r\n[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\r\n","")
-                .replaceAll("\r\n.\r\n","")
+        return  content.replaceAll("-\n", "")
+                .replaceAll(".Kancelaria Sejmu.*\n[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\n","")
+                .replaceAll("\n.\n","")
                 .replaceFirst("s2p", " ")
-                .replaceFirst("KON.*\r\nRZECZY.*EJ\r\nz.*7 r.\r\n", "KONSTYTUCJA RZECZYPOSPOLITEJ\r\n")
-                .replaceFirst("^.*\r\nUSTAWA\r\nz.*r.\r\no oc.*ów\r\n", "USTAWA o ochronie konkurencji i konsumentów\r\n");
+                .replaceFirst(".KON.*\nRZECZY.*EJ\nz.*7 r.\n", "KONSTYTUCJA RZECZYPOSPOLITEJ\n")
+                .replaceFirst("^.*\nUSTAWA\nz.*r.\no oc.*ów\n", "USTAWA o ochronie konkurencji i konsumentów\n");
     }
 }

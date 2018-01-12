@@ -10,7 +10,7 @@ public class NodeAssignor {
         String universalID = new String();
         String nodeContent = new String();
 
-        for(String line : fileContent.replaceAll("\r\n", "/").split("/")){
+        for(String line : fileContent.replaceAll("\n", "/").split("/")){
             if(line.matches("Art\\. .*")) {
                 parent = this.getPriorityParent(type, node);
                 node = new DocumentNode(parent, type, id, universalID, nodeContent);
@@ -75,7 +75,7 @@ public class NodeAssignor {
                 universalID = id;
                 nodeContent = line;
             } else {
-                nodeContent = nodeContent + "\r\n" + line;
+                nodeContent = nodeContent + "\n" + line;
             }
         }
         node = new DocumentNode(this.getPriorityParent(type, node), type, id, universalID, nodeContent);

@@ -46,7 +46,7 @@ public class DocumentNode {
     public String toString(){
         String result = this.content;
         for(DocumentNode node : this.Nodes){
-            result = result + "\r\n" + node.toString();
+            result = result + "\n" + node.toString();
         }
         return result;
     }
@@ -54,7 +54,7 @@ public class DocumentNode {
     public String showTableOfContents(){
         String result = this.type.toString() + " " + this.id;
         for(DocumentNode node : this.Nodes) {
-            result = result + "\r\n" + node.type.toString() + " " + node.id;
+            result = result + "\n" + node.type.toString() + " " + node.id;
         }
         return result;
     }

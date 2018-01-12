@@ -33,7 +33,7 @@ public class Cli {
     public boolean checkHelp(){
         if(this.cmd.hasOption("h")) {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("main <options> [arguments]", "Available options: ", options, "\r\nUsage examples: \r\n main -f konstytucja.txt -a 4 -s 2\r\n main -f uokik.txt -u II:III -t");
+            formatter.printHelp("main <options> [arguments]", "Available options: ", options, "\nUsage examples: \n main -f konstytucja.txt -a 4 -s 2\n main -f uokik.txt -u II:III -t");
             return true;
         }
         return false;
